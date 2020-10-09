@@ -1,7 +1,8 @@
-#include <iostream>
+﻿#include <iostream>
 #include <string>
 #include <math.h>
 #include <windows.h>
+
 
 
 
@@ -52,31 +53,65 @@ void matrixMultiplicationInstructions() {
 
 }
 
+void matrixSumInstructions() {
+	cout << "The sum of two matrices is only possible if they have the same quantity of rows and columns." << "EX:";
 
-double** matrixMultiplication() {
+	float fRowsMatrixA = 3, fColumnsMatrixA = 3;
+	int iAMatrixEX[] = { 1, 2, 3 };
+	int iBMatrixEX[] = { 4, 5, 6 };
+	int iCMatrixEX[] = { 7, 8, 9 };
+	int* iMatrixEX[] = { iAMatrixEX, iBMatrixEX, iCMatrixEX };
 
-
-	char cMatrixCorrect;
-	while (cMatrixCorrect == 'y')
+	for (int i = 0; i < fRowsMatrixA; i++)
 	{
+		for (int j = 0; j < fColumnsMatrixA; j++) {
+			cout << iMatrixEX[i][j] << "  ";
+		}
+		cout << endl;
+	}
 
+	cout << endl << endl;
+	cout << "This is a " << fRowsMatrixA << " x [" << fColumnsMatrixA << "] matrice." << endl << endl;
 
+	int iRowsMatrixB = 3, iColumnsMatrixB = 3;
+	int iAMatrixBEX[] = { 6, 5, 4 };
+	int iBMatrixBEX[] = { 1, 2, 3 };
+	int iCMatrixBEX[] = { 2, 4, 6 };
+	int* iMatrixBEX[] = { iAMatrixBEX, iBMatrixBEX, iCMatrixBEX };
 
-		double dMatrixA[15][15], dMatrixB[15][15], dMultMatrixAB[15][15];
-		int iRowsMatrixA, iColumnMatrixA, iRowsMatrixB, iColumnMatrixB, iTempMultMatrixAB;
-		
+	for (int i = 0; i < iRowsMatrixB; i++)
+	{
+		for (int j = 0; j < iColumnsMatrixB; j++) {
+			cout << iMatrixBEX[i][j] << "  ";
+		}
+		cout << endl;
+	}
+
+	cout << endl << endl;
+	cout << "This is a [" << iRowsMatrixB << "] x " << iColumnsMatrixB << " matrice." << endl << endl << endl;
+	cout << "As you can see. The matrices A ([3]x[3]) and B ([3]x[3])" << "can be multiplificated." << endl;
+	cout << "Press ENTER to continue you multiplifications of matrices." << endl;
+	
+}
+
+void matrixMultiplication() {
 
 		char cInstructions;
 		cout << "Do you want to see the instructions for a multiplications of matrices? (y/n)" << endl;
 
 		cin >> cInstructions;
-		if (cInstructions == 'y')
+		if (cInstructions == 'y' || cInstructions == 'Y')
 		{
 			matrixMultiplicationInstructions();
 		}
 
+		char cMatrixCorrection;
 
-		cout << "Put down  the nescessary valouers..." << endl;
+		double dMatrixA[15][15], dMatrixB[15][15], dMultMatrixAB[15][15];
+		int iRowsMatrixA, iColumnMatrixA, iRowsMatrixB, iColumnMatrixB, iTempMultMatrixAB;
+
+
+		cout << "Put down  the nescessary valuers..." << endl;
 		cout << "Put here how many rows there is in the first matrix (Matrix A):  ";
 		cin >> iRowsMatrixA;
 		cout << endl;
@@ -97,14 +132,7 @@ double** matrixMultiplication() {
 		}
 
 		cout << endl << endl;
-		cout << "Your matrice looks like this" << endl;
-		for (int i = 0; i < iRowsMatrixA; i++)
-		{
-			for (int j = 0; j < iColumnMatrixA; j++) {
-				cout << dMatrixA[i][j];
-			}
-			cout << endl;
-		}
+		
 
 
 
@@ -122,28 +150,153 @@ double** matrixMultiplication() {
 			}
 		}
 
+
+
+		int count = 0;
+		cout << "Please wait..." << endl << "Loading [ ";
+		for (count; count < 10; ++count) {
+			cout << " - ";
+			fflush(stdout);
+			Sleep(500);
+		}
+		cout<< ">]" << endl << "Done" << endl;
+
+
 		cout << endl << endl;
+		cout << "Your matrices look like this" << endl;
+
+
 		cout << "Your matrice looks like this" << endl;
-		for (int i = 0; i < iRowsMatrixB; i++)
+		cout << "Matrix A" << endl;
+		for (int i = 0; i < iRowsMatrixA; i++)
 		{
-			for (int j = 0; j < iColumnMatrixB; j++)
-			{
-				cout << dMatrixB[i][j] << " ";
+			for (int j = 0; j < iColumnMatrixA; j++) {
+				cout << "[ " << dMatrixA[i][j] << " ] ";
 			}
 			cout << endl;
 		}
 
+		cout << endl << endl << endl << "MatrixB" << endl;
+
+
+		for (int i = 0; i < iRowsMatrixB; i++)
+		{	
+			for (int j = 0; j < iColumnMatrixB; j++)
+			{
+				cout << "[ " << dMatrixB[i][j] << " ] ";
+			}
+			cout << endl;
+		}
+
+
 		cout << endl;
-		cout << "Does your matrices looke like u wanted ?";
+		cout << "Does your matrices look like you wanted ?";
 		cout << endl;
 		cout << "(y/n)?";
-		cin >> cMatrixCorrect;
+		cin >> cMatrixCorrection;
+		if (cMatrixCorrection == 'y' || cMatrixCorrection == 'Y')
+		{
+			cout << "PERFECT :D. let's continue..." << endl << "Press ENTER to continue";
+		}
+		if (cMatrixCorrection == 'n' || cMatrixCorrection == 'N')
+		{
+
+			int iMatriceCorection;
+			cout << "ok... Which one ?"<< endl;
+			cout << "press 1 for Matrice A" << endl;
+			cout << "press 2 for Matrice B" << endl;
+			cout << "press 3 for both Matrices" << endl;
+			cin >> iMatriceCorection;
+			switch (iMatriceCorection)
+			{
+			case 1:
+				cout << "Alright... let's we try again. " << endl << "[ENTER TO CONTINUE]";
+				cin.get();
+				cout << "Put here how many rows there is in the first matrix (Matrix A):  ";
+				cin >> iRowsMatrixA;
+				cout << endl;
+				cout << "Put here how many columns there is in the matrix A:  ";
+				cin >> iColumnMatrixA;
+				cout << endl << endl;
+				cout << "Put here all numbers of Matrice A" << endl << "Ex: " << endl;
+				cout << "1 2 3	 [ENTER]" << endl;
+				cout << "4 5 6	 [ENTER]" << endl;
+				cout << "7 8 9	 [ENTER]" << endl << endl << endl;
+				cout << "Now it's your turn: " << endl;
+
+				for (int i = 0; i < iRowsMatrixA; i++)
+				{
+					for (int j = 0; j < iColumnMatrixA; j++) {
+						cin >> dMatrixA[i][j];
+					}
+				}
+
+				cout << endl << endl;
+				cout << "Your matrice looks like this" << endl;
+				for (int i = 0; i < iRowsMatrixA; i++)
+				{
+					for (int j = 0; j < iColumnMatrixA; j++) {
+						cout << "[ " << dMatrixA[i][j] << " ] ";
+					}
+					cout << endl;
+				}
+
+				break;
+			
+			case 2:
+
+				cout << "Alright... let's we try again. " << endl << "[ENTER TO CONTINUE]";
+				cin.get();
+				cout << "Put here how many rows there is in the secound matrix (Matrix B):  ";
+				cin >> iRowsMatrixB;
+				cout << endl;
+				cout << "Put here how many columns there is in the matrix B:  ";
+				cin >> iColumnMatrixB;
+				cout << endl << endl;
+
+				for (int i = 0; i < iRowsMatrixB; i++)
+				{
+					for (int j = 0; j < iColumnMatrixB; j++) {
+						cin >> dMatrixB[i][j];
+					}
+				}
+
+				cout << endl << endl;
+				cout << "Your matrice looks like this" << endl;
+				for (int i = 0; i < iRowsMatrixB; i++)
+				{
+					for (int j = 0; j < iColumnMatrixB; j++)
+					{
+						cout << "[ " << dMatrixB[i][j] << " ] ";
+					}
+					cout << endl;
+				}
+
+				break;
+
+			case 3:
+
+				matrixMultiplication();
+
+				break;
+			default:
+
+				cout << "Sorry I couldn't understand what you mean... So let's we try for the beginning. ok? " << endl << "[ENTER TO CONTINUE]";
+				cin.get();
+				matrixMultiplication();
+
+				break;
+			}
+
+		}
 
 		cout << endl << endl;
 		if (iColumnMatrixA != iRowsMatrixB)
 		{
 
-			cout << "I'm sorry but this matrices can't be multiplicated" << endl;
+			cout << "I'm sorry but this matrices can't be multiplicated" << endl << "I sugest you to read the Instructions..." << endl << "[ENTER TO CONTINUE]";
+			cin.get();
+			matrixMultiplication();
 
 		}
 		else
@@ -161,21 +314,92 @@ double** matrixMultiplication() {
 				}
 			}
 		}
-	}
+	
+	
 	
 }
 
-double** matrixSum() {
+void matrixSum() {
+
+	int iRowsMatrix, iColumnsMatrix;
+	double dMatrixA[15][15], dMatrixB[15][15];
+
+	cout << "Do you want to see the instructions for addition of matrices first?" << "(y/n)";
+	char cInstructions; 	
+	cin >> cInstructions;
+	if (cInstructions == 'y' || cInstructions == 'Y')
+	{
+		matrixSumInstructions();
+		cin.get();
+	}
+	if (cInstructions == 'n' || cInstructions == 'N')
+	{
+		cout << "ok. No instructions..." << endl << "Press ENTER to continue";
+		cin.get();
+	}
+	else
+	{
+		cout << "Ups... something is wrong. Try to put y OR n";
+		matrixSum();
+	}
+
+
+	cout << "Now put the valuer for the rows:  ";
+	cin >> iRowsMatrix;
+	cout << "Now put the valuer for the columns:  ";
+	cin >> iColumnsMatrix;
+
+	cout << "Now put the valuers for the first matrix (Matrix A)" << endl;
+	for (int i = 0; i < iRowsMatrix; i++)
+	{
+
+		for (int j = 0; j < iColumnsMatrix; j++)
+		{
+			cin >> dMatrixA[i][j];
+		}
+		cout << endl;
+	}
+	cout << endl;
+	
+	cout << "Now put the valuers for the secound matrix (Matrix B)" << endl;
+	for (int i = 0; i < iRowsMatrix; i++)
+	{
+
+		for (int j = 0; j < iColumnsMatrix; j++)
+		{
+			cin >> dMatrixB[i][j];
+		}
+		cout << endl;
+	}
+
+	cout << endl;
+
+	cout << "Do your matrixes look like this ?" << endl;
+
+	for (int i = 0; i < iRowsMatrix; i++)
+	{
+
+		for (int j = 0; j < iColumnsMatrix; j++)
+		{
+			cout << dMatrixA[i][j];
+		}
+		cout << "\t + \t";
+		for (int j = 0; j < iColumnsMatrix; j++)
+		{
+			cout <<" [ " << dMatrixB[i][j] << " ] ";
+		}
+		cout << endl;
+		cout << endl;
+	}
+
+	
+}
+
+void matrixSubtraction() {
 
 }
 
-double** matrixSubtraction() {
 
-}
-
-void matrixSumInstructions() {
-
-}
 
 void instructions() {
 
@@ -193,13 +417,20 @@ int main(int arg, char* argv[]) {
 
 
 	float fMatrixOperation;
-	char sInstructions;
+	char cInstructions;
 	cout << "Do you want to see the instructions ? (y/n)";
-	cin >> sInstructions;
+	cin >> cInstructions;
 
-	if (sInstructions == 'y')
+	if (cInstructions == 'y' || cInstructions == 'Y')
 	{
 		instructions();
+		cin.get();
+	}
+	
+	if (cInstructions == 'n' || cInstructions == 'N')
+	{
+		cout << "ok. No instructions..." << endl << "Press ENTER to continue";
+		cin.get();
 	}
 
 
